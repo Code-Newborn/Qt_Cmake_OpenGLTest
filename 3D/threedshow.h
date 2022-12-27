@@ -9,6 +9,7 @@
 #include <QOpenGLTexture>
 
 #include "Camera.h"
+#include "dice.h"
 
 // QOpenGL窗口类继承于QOpenGLWidget
 class ThreeDShow : public QOpenGLWidget, protected QOpenGLExtraFunctions
@@ -36,18 +37,10 @@ protected:
     virtual void timerEvent(QTimerEvent *event) override;
 
 private:
-    QOpenGLShaderProgram shaderProgram; // 控制渲染流程的对象
-    QOpenGLVertexArrayObject VAO;       // 顶点列表对象
-    QOpenGLBuffer VBO;                  // 顶点缓存对象
-    QOpenGLBuffer EBO;                  // 顶点索引缓存对象
-    QOpenGLTexture *m_texture = nullptr;
     QMatrix4x4 m_projection;
-    QMatrix4x4 m_view;
-    QMatrix4x4 m_model;
 
     Camera m_camera;
-
-    int m_angle = 0;
+    QVector<Model *> m_models;
 };
 
 #endif // THREEDSHOW_H
